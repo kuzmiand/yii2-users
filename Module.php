@@ -41,10 +41,10 @@ class Module extends \yii\base\Module
 
     public function getCustomLayout($default)
     {
-        if (isset($this->customViews[$default])) {
-            return $this->customViews[$default];
+        if (isset($this->customLayout[$default])) {
+            return $this->customLayout[$default];
         } else {
-            return Yii::app()->controller->layout;
+            return '@app/views/layouts/main';
         }
     }
 
