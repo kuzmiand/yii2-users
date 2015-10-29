@@ -5,7 +5,7 @@ namespace kuzmiand\users\controllers;
 use Yii;
 use kuzmiand\users\models\User;
 use yii\data\ActiveDataProvider;
-use kuzmiand\users\components\Controller;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use kuzmiand\users\models\forms\AssignmentForm;
