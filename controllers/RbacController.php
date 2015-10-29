@@ -14,6 +14,13 @@ use yii\filters\AccessControl;
 
 class RbacController extends Controller
 {
+
+    public function init()
+    {
+        parent::init();
+        $this->layout = $this->module->getCustomLayout('rbac');
+    }
+
     public function behaviors()
     {
         return [

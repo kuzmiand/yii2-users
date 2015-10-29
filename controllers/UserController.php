@@ -17,6 +17,13 @@ use yii\web\BadRequestHttpException;
 
 class UserController extends \yii\web\Controller
 {
+
+    public function init()
+    {
+        parent::init();
+        $this->layout = $this->module->getCustomLayout('user');
+    }
+
     public function actions()
     {
         return [

@@ -8,6 +8,13 @@ use Yii;
 
 class AuthController extends \yii\web\Controller
 {
+
+    public function init()
+    {
+        parent::init();
+        $this->layout = $this->module->getCustomLayout('auth');
+    }
+
     public function beforeAction($action)
     {
         if ($action->id == 'index' && Yii::$app->request->referrer !== null) {

@@ -16,6 +16,8 @@ class Module extends \yii\base\Module
 
     public $customMailViews = [];
 
+    public $customLayout = [];
+
     public function init()
     {
         parent::init();
@@ -34,6 +36,15 @@ class Module extends \yii\base\Module
                     'users' => 'users.php'
                 ]
             ];
+        }
+    }
+
+    public function getCustomLayout($default)
+    {
+        if (isset($this->customViews[$default])) {
+            return $this->customViews[$default];
+        } else {
+            return Yii::app()->controller->layout;
         }
     }
 
