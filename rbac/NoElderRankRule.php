@@ -1,6 +1,6 @@
 <?php
 
-namespace budyaga\users\rbac;
+namespace kuzmiand\users\rbac;
 
 use yii\rbac\Rule;
 use Yii;

@@ -2,11 +2,11 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use budyaga\users\models\AuthRule;
+use kuzmiand\users\models\AuthRule;
 use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
-/* @var $model budyaga\users\models\AuthItem */
+/* @var $model kuzmiand\users\models\AuthItem */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace budyaga\users\models;
+namespace kuzmiand\users\models;
 
 use Yii;
 use yii\base\Model;
@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use yii\rbac\Item;
 
 /**
- * AuthItemSearch represents the model behind the search form about `budyaga\users\models\AuthItem`.
+ * AuthItemSearch represents the model behind the search form about `kuzmiand\users\models\AuthItem`.
  */
 class AuthItemSearch extends AuthItem
 {

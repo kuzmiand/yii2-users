@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model budyaga\users\models\AuthRule */
+/* @var $model kuzmiand\users\models\AuthRule */
 
 $this->title = Yii::t('users', 'CREATE_MODEL', ['type' => $this->context->getModelTypeTitle($type)]);
 $this->params['breadcrumbs'][] = ['label' => 'RBAC', 'url' => ['index']];

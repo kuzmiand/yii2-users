@@ -1,9 +1,9 @@
 <?php
 
-namespace budyaga\users\components;
+namespace kuzmiand\users\components;
 
-use budyaga\users\models\forms\LoginForm;
-use budyaga\users\Module;
+use kuzmiand\users\models\forms\LoginForm;
+use kuzmiand\users\Module;
 use yii\base\Widget;
 
 class AuthorizationWidget extends Widget

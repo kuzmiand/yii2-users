@@ -1,13 +1,13 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use budyaga\users\models\User;
-use budyaga\cropper\Widget;
+use kuzmiand\users\models\User;
+use kuzmiand\cropper\Widget;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \budyaga\users\models\SignupForm */
+/* @var $model \kuzmiand\users\models\SignupForm */
 
 $this->title = Yii::t('users', 'SIGNUP');
 $this->params['breadcrumbs'][] = $this->title;

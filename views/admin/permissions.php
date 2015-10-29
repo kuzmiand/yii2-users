@@ -1,12 +1,12 @@
 <?php
 
 use yii\helpers\Html;
-use budyaga\users\UsersAsset;
+use kuzmiand\users\UsersAsset;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
-/* @var $model budyaga\users\models\User */
+/* @var $model kuzmiand\users\models\User */
 
 $this->title = $modelForm->model->username;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('users', 'USERS'), 'url' => ['index']];

@@ -3,8 +3,8 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use budyaga\users\components\PermissionsTreeWidget;
-use budyaga\users\UsersAsset;
+use kuzmiand\users\components\PermissionsTreeWidget;
+use kuzmiand\users\UsersAsset;
 
 $this->title = Yii::t('users', 'CHILDREN_FOR', ['modelName' => $modelForm->model->name]);
 $this->params['breadcrumbs'][] = ['label' => 'RBAC', 'url' => ['/user/rbac/index']];

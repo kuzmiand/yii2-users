@@ -2,9 +2,9 @@
 
 use yii\db\Schema;
 use yii\db\Migration;
-use budyaga\users\models\User;
+use kuzmiand\users\models\User;
 use yii\rbac\Item;
-use budyaga\users\Module;
+use kuzmiand\users\Module;
 
 class m130524_201442_init extends Migration
 {
@@ -112,7 +112,7 @@ class m130524_201442_init extends Migration
         ]);
         $this->insert('auth_rule', [
             'name' => 'noElderRank',
-            'data' => 'O:34:"budyaga\users\rbac\NoElderRankRule":3:{s:4:"name";s:11:"noElderRank";s:9:"createdAt";N;s:9:"updatedAt";i:1431880756;}',
+            'data' => 'O:34:"kuzmiand\users\rbac\NoElderRankRule":3:{s:4:"name";s:11:"noElderRank";s:9:"createdAt";N;s:9:"updatedAt";i:1431880756;}',
             'created_at' => time(),
             'updated_at' => time(),
         ]);

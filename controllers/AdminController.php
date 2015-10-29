@@ -1,14 +1,14 @@
 <?php
 
-namespace budyaga\users\controllers;
+namespace kuzmiand\users\controllers;
 
 use Yii;
-use budyaga\users\models\User;
+use kuzmiand\users\models\User;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use budyaga\users\models\forms\AssignmentForm;
+use kuzmiand\users\models\forms\AssignmentForm;
 use yii\filters\AccessControl;
 
 /**

@@ -1,7 +1,7 @@
 <?php
-namespace budyaga\users\models\forms;
+namespace kuzmiand\users\models\forms;
 
-use budyaga\users\models;
+use kuzmiand\users\models;
 use yii\base\Model;
 use Yii;
 

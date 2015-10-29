@@ -1,15 +1,15 @@
 <?php
 
-namespace budyaga\users\controllers;
+namespace kuzmiand\users\controllers;
 
-use budyaga\users\models\forms\ChangeEmailForm;
-use budyaga\users\models\forms\ChangePasswordForm;
-use budyaga\users\models\forms\RetryConfirmEmailForm;
-use budyaga\users\models\UserEmailConfirmToken;
-use budyaga\users\models\forms\LoginForm;
-use budyaga\users\models\forms\PasswordResetRequestForm;
-use budyaga\users\models\forms\ResetPasswordForm;
-use budyaga\users\models\forms\SignupForm;
+use kuzmiand\users\models\forms\ChangeEmailForm;
+use kuzmiand\users\models\forms\ChangePasswordForm;
+use kuzmiand\users\models\forms\RetryConfirmEmailForm;
+use kuzmiand\users\models\UserEmailConfirmToken;
+use kuzmiand\users\models\forms\LoginForm;
+use kuzmiand\users\models\forms\PasswordResetRequestForm;
+use kuzmiand\users\models\forms\ResetPasswordForm;
+use kuzmiand\users\models\forms\SignupForm;
 use Yii;
 use yii\helpers\Url;
 use yii\base\InvalidParamException;
@@ -21,7 +21,7 @@ class UserController extends \yii\web\Controller
     {
         return [
             'uploadPhoto' => [
-                'class' => 'budyaga\cropper\actions\UploadAction',
+                'class' => 'kuzmiand\cropper\actions\UploadAction',
                 'url' => Yii::$app->controller->module->userPhotoUrl,
                 'path' => Yii::$app->controller->module->userPhotoPath,
             ]

@@ -2,12 +2,12 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use budyaga\cropper\Widget;
-use budyaga\users\models\User;
+use kuzmiand\cropper\Widget;
+use kuzmiand\users\models\User;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $model budyaga\users\models\User */
+/* @var $model kuzmiand\users\models\User */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

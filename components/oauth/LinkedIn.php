@@ -1,9 +1,9 @@
 <?php
 
-namespace budyaga\users\components\oauth;
+namespace kuzmiand\users\components\oauth;
 
-use budyaga\users\models\User;
-use budyaga\users\models\UserOauthKey;
+use kuzmiand\users\models\User;
+use kuzmiand\users\models\UserOauthKey;
 
 class LinkedIn extends \yii\authclient\clients\LinkedIn
 {

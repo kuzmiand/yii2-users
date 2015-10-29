@@ -30,13 +30,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist budyaga/yii2-users "*"
+php composer.phar require --prefer-dist kuzmiand/yii2-users "*"
 ```
 
 or add
 
 ```
-"budyaga/yii2-users": "*"
+"kuzmiand/yii2-users": "*"
 ```
 
 to the require section of your `composer.json` file.
@@ -47,7 +47,7 @@ Config
 
 ```
 'user' => [
-    'identityClass' => 'budyaga\users\models\User',
+    'identityClass' => 'kuzmiand\users\models\User',
     'enableAutoLogin' => true,
     'loginUrl' => ['/login'],
 ],
@@ -55,44 +55,44 @@ Config
     'class' => 'yii\authclient\Collection',
     'clients' => [
         'vkontakte' => [
-            'class' => 'budyaga\users\components\oauth\VKontakte',
+            'class' => 'kuzmiand\users\components\oauth\VKontakte',
             'clientId' => 'XXX',
             'clientSecret' => 'XXX',
             'scope' => 'email'
         ],
         'google' => [
-            'class' => 'budyaga\users\components\oauth\Google',
+            'class' => 'kuzmiand\users\components\oauth\Google',
             'clientId' => 'XXX',
             'clientSecret' => 'XXX',
         ],
         'facebook' => [
-            'class' => 'budyaga\users\components\oauth\Facebook',
+            'class' => 'kuzmiand\users\components\oauth\Facebook',
             'clientId' => 'XXX',
             'clientSecret' => 'XXX',
         ],
         'github' => [
-            'class' => 'budyaga\users\components\oauth\GitHub',
+            'class' => 'kuzmiand\users\components\oauth\GitHub',
             'clientId' => 'XXX',
             'clientSecret' => 'XXX',
             'scope' => 'user:email, user'
         ],
         'linkedin' => [
-            'class' => 'budyaga\users\components\oauth\LinkedIn',
+            'class' => 'kuzmiand\users\components\oauth\LinkedIn',
             'clientId' => 'XXX',
             'clientSecret' => 'XXX',
         ],
         'live' => [
-            'class' => 'budyaga\users\components\oauth\Live',
+            'class' => 'kuzmiand\users\components\oauth\Live',
             'clientId' => 'XXX',
             'clientSecret' => 'XXX',
         ],
         'yandex' => [
-            'class' => 'budyaga\users\components\oauth\Yandex',
+            'class' => 'kuzmiand\users\components\oauth\Yandex',
             'clientId' => 'XXX',
             'clientSecret' => 'XXX',
         ],
         'twitter' => [
-            'class' => 'budyaga\users\components\oauth\Twitter',
+            'class' => 'kuzmiand\users\components\oauth\Twitter',
             'consumerKey' => 'XXX',
             'consumerSecret' => 'XXX',
         ],
@@ -120,7 +120,7 @@ Config
 
 'modules' => [
     'user' => [
-        'class' => 'budyaga\users\Module',
+        'class' => 'kuzmiand\users\Module',
         'userPhotoUrl' => 'http://example.com/uploads/user/photo',
         'userPhotoPath' => '@frontend/web/uploads/user/photo'
     ],
@@ -145,7 +145,7 @@ Not all services returns all user data. Some of the data get the default setting
 
 Database migrations
 --------
-*yii migrate/up --migrationPath=@vendor/budyaga/yii2-users/migrations*
+*yii migrate/up --migrationPath=@vendor/kuzmiand/yii2-users/migrations*
 
 This migration create all necessary for the operation of the module tables and two users:
 
@@ -158,7 +158,7 @@ Usage
 --------
 in main layout:
 ```
-use budyaga\users\components\AuthorizationWidget;
+use kuzmiand\users\components\AuthorizationWidget;
 ```
 
 ```
@@ -181,7 +181,7 @@ If you want use custom views and email templates you can override their in confi
 ```
 'modules' => [
     'user' => [
-        'class' => 'budyaga\users\Module',
+        'class' => 'kuzmiand\users\Module',
         'customViews' => [
             'login' => '@app/views/site/login'
         ],
@@ -191,4 +191,4 @@ If you want use custom views and email templates you can override their in confi
     ],
 ],
 ```
-You can override all views from *vendor\budyaga\yii2-users\views\user* and *vendor\budyaga\yii2-users\mail* folders.
+You can override all views from *vendor\kuzmiand\yii2-users\views\user* and *vendor\kuzmiand\yii2-users\mail* folders.

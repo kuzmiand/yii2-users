@@ -1,12 +1,12 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use budyaga\users\components\AuthChoice;
+use kuzmiand\users\components\AuthChoice;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \budyaga\users\models\forms\LoginForm */
+/* @var $model \kuzmiand\users\models\forms\LoginForm */
 
 $this->title = Yii::t('users', 'LOGIN');
 $this->params['breadcrumbs'][] = $this->title;

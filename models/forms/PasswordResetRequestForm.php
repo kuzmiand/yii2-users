@@ -1,8 +1,8 @@
 <?php
-namespace budyaga\users\models\forms;
+namespace kuzmiand\users\models\forms;
 
-use budyaga\users\models\User;
-use budyaga\users\models\UserPasswordResetToken;
+use kuzmiand\users\models\User;
+use kuzmiand\users\models\UserPasswordResetToken;
 use yii\base\Model;
 use Yii;
 
@@ -25,7 +25,7 @@ class PasswordResetRequestForm extends Model
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'exist',
-                'targetClass' => '\budyaga\users\models\User',
+                'targetClass' => '\kuzmiand\users\models\User',
                 'filter' => ['status' => User::STATUS_ACTIVE],
                 'message' => Yii::t('users', 'USER_WITH_SUCH_EMAIL_NOT_EXISTS')
             ],
@@ -44,7 +44,7 @@ class PasswordResetRequestForm extends Model
             return false;
         }
 
-        return \Yii::$app->mailer->compose(['html' => '@budyaga/users/mail/passwordResetToken-html', 'text' => '@budyaga/users/mail/passwordResetToken-text'], ['user' => $user, 'token' => $this->token])
+        return \Yii::$app->mailer->compose(['html' => '@kuzmiand/users/mail/passwordResetToken-html', 'text' => '@kuzmiand/users/mail/passwordResetToken-text'], ['user' => $user, 'token' => $this->token])
             ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
             ->setTo($this->email)
             ->setSubject('Password reset for ' . \Yii::$app->name)

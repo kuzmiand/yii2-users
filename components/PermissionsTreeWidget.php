@@ -1,8 +1,8 @@
 <?php
 
-namespace budyaga\users\components;
+namespace kuzmiand\users\components;
 
-use budyaga\users\models\AuthItem;
+use kuzmiand\users\models\AuthItem;
 use yii\base\Widget;
 use Yii;
 

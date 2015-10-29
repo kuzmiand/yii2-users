@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model budyaga\users\models\AuthRule */
+/* @var $model kuzmiand\users\models\AuthRule */
 
 $this->title = Yii::t('users', 'UPDATE_MODEL', ['type' => Yii::t('users', $this->context->getModelTypeTitle($type)), 'name' => $model->name]);
 $this->params['breadcrumbs'][] = ['label' => 'RBAC', 'url' => ['/user/rbac/index']];

@@ -1,8 +1,8 @@
 <?php
-namespace budyaga\users\models\forms;
+namespace kuzmiand\users\models\forms;
 
 use yii\base\Model;
-use budyaga\users\models\User;
+use kuzmiand\users\models\User;
 use Yii;
 
 class RetryConfirmEmailForm extends Model
@@ -16,7 +16,7 @@ class RetryConfirmEmailForm extends Model
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'exist',
-                'targetClass' => '\budyaga\users\models\UserEmailConfirmToken',
+                'targetClass' => '\kuzmiand\users\models\UserEmailConfirmToken',
                 'targetAttribute' => 'new_email',
                 'filter' => ['old_email' => ''],
                 'message' => Yii::t('users', 'USER_WITH_SUCH_EMAIL_DO_NOT_EXISTS')

@@ -3,7 +3,7 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use budyaga\users\components\AuthChoice;
+use kuzmiand\users\components\AuthChoice;
 
 ?>
 <div class="panel panel-default">
