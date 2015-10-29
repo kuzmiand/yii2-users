@@ -53,7 +53,7 @@ class Module extends \yii\base\Module
         if (isset($this->customViews[$default])) {
             return $this->customViews[$default];
         } else {
-            return $default;
+            return '@app/views/layouts/main';
         }
     }
 
