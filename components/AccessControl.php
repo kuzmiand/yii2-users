@@ -2,7 +2,7 @@
 
 namespace kuzmiand\users\components;
 
-use kuzmiand\users\rbacDB\Route;
+use kuzmiand\users\models\rbacDB\Route;
 use kuzmiand\users\models\User;
 use yii\base\Action;
 use Yii;

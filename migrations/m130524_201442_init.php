@@ -79,7 +79,8 @@ class m130524_201442_init extends Migration
             'rule_name' => Schema::TYPE_STRING.'(64)',
             'data' => Schema::TYPE_TEXT,
             'created_at' => Schema::TYPE_INTEGER,
-            'updated_at' => Schema::TYPE_INTEGER
+            'updated_at' => Schema::TYPE_INTEGER,
+            'group_code' => Schema::TYPE_STRING.'(64)'
         ], $tableOptions);
         $this->addPrimaryKey('auth_item_name_pk', '{{%auth_item}}', 'name');
         $this->addForeignKey('auth_item_rule_name_fk', '{{%auth_item}}', 'rule_name', '{{%auth_rule}}',  'name', 'SET NULL', 'CASCADE');
@@ -105,6 +106,20 @@ class m130524_201442_init extends Migration
         $this->addForeignKey('auth_assignment_item_name_fk', '{{%auth_assignment}}', 'item_name', '{{%auth_item}}', 'name', 'CASCADE', 'CASCADE');
         $this->addForeignKey('auth_assignment_user_id_fk', '{{%auth_assignment}}', 'user_id', '{{%user}}', 'id', 'CASCADE', 'CASCADE');
 
+
+        $this->createTable('{{%auth_item_group}}', [
+            'code' => 'varchar(64) NOT NULL',
+            'name' => 'varchar(255) NOT NULL',
+
+            'created_at' => 'int',
+            'updated_at' => 'int',
+            'PRIMARY KEY (code)',
+
+        ], $tableOptions);
+
+        $this->addForeignKey('fk_auth_item_group_code', '{{%auth_item}}', 'group_code', '{{%auth_item_group}}', 'code', 'SET NULL', 'CASCADE');
+
+
         //аккаунт для администратора и права
         $this->batchInsert('user', ['id', 'username', 'password_hash', 'email', 'status', 'created_at', 'updated_at'], [
             [1, Yii::t('users', 'MIGRATION_ADMINISTRATOR'), Yii::$app->security->generatePasswordHash('administrator@example.com'), 'administrator@example.com', User::STATUS_ACTIVE, time(), time()],
@@ -112,21 +127,21 @@ class m130524_201442_init extends Migration
         ]);
         $this->insert('auth_rule', [
             'name' => 'noElderRank',
-            'data' => 'O:34:"kuzmiand\users\rbac\NoElderRankRule":3:{s:4:"name";s:11:"noElderRank";s:9:"createdAt";N;s:9:"updatedAt";i:1431880756;}',
+            'data' => 'O:35:"kuzmiand\users\rbac\NoElderRankRule":3:{s:4:"name";s:11:"noElderRank";s:9:"createdAt";N;s:9:"updatedAt";i:1431880756;}',
             'created_at' => time(),
             'updated_at' => time(),
         ]);
-        $this->batchInsert('auth_item', ['name', 'type', 'description', 'rule_name', 'created_at', 'updated_at'], [
-            ['administrator', Item::TYPE_ROLE, Yii::t('users', 'MIGRATION_ADMINISTRATOR'), NULL, time(), time()],
-            ['moderator', Item::TYPE_ROLE, Yii::t('users', 'MIGRATION_MODERATOR'), NULL, time(), time()],
-            ['rbacManage', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_RBAC_MANAGE'), NULL, time(), time()],
-            ['userCreate', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_USER_CREATE'), NULL, time(), time()],
-            ['userDelete', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_USER_DELETE'), NULL, time(), time()],
-            ['userManage', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_USER_MANAGE'), NULL, time(), time()],
-            ['userPermissions', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_USER_PERMISSIONS'), NULL, time(), time()],
-            ['userUpdate', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_USER_UPDATE'), NULL, time(), time()],
-            ['userUpdateNoElderRank', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_USER_UPDATE_NO_ELDER_RANK'), 'noElderRank', time(), time()],
-            ['userView', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_USER_VIEW'), NULL, time(), time()],
+        $this->batchInsert('auth_item', ['name', 'type', 'description', 'rule_name', 'created_at', 'updated_at', 'group_code'], [
+            ['administrator', Item::TYPE_ROLE, Yii::t('users', 'MIGRATION_ADMINISTRATOR'), NULL, time(), time(), NULL],
+            ['moderator', Item::TYPE_ROLE, Yii::t('users', 'MIGRATION_MODERATOR'), NULL, time(), time(), NULL],
+            ['rbacManage', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_RBAC_MANAGE'), NULL, time(), time(), NULL],
+            ['userCreate', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_USER_CREATE'), NULL, time(), time(), NULL],
+            ['userDelete', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_USER_DELETE'), NULL, time(), time(), NULL],
+            ['userManage', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_USER_MANAGE'), NULL, time(), time(), NULL],
+            ['userPermissions', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_USER_PERMISSIONS'), NULL, time(), time(), NULL],
+            ['userUpdate', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_USER_UPDATE'), NULL, time(), time(), NULL],
+            ['userUpdateNoElderRank', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_USER_UPDATE_NO_ELDER_RANK'), 'noElderRank', time(), time(), NULL],
+            ['userView', Item::TYPE_PERMISSION, Yii::t('users', 'MIGRATION_USER_VIEW'), NULL, time(), time(), NULL],
         ]);
         $this->batchInsert('auth_item_child', ['parent', 'child'], [
             ['administrator', 'rbacManage'],
@@ -152,6 +167,7 @@ class m130524_201442_init extends Migration
         $this->dropTable('{{%auth_item_child}}');
         $this->dropTable('{{%auth_item}}');
         $this->dropTable('{{%auth_rule}}');
+        $this->dropTable('{{%auth_item_group}}');
         $this->dropTable('{{%user_oauth_key}}');
         $this->dropTable('{{%user_email_confirm_token}}');
         $this->dropTable('{{%user_password_reset_token}}');

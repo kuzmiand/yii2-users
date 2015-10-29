@@ -119,7 +119,7 @@ abstract class AbstractItem extends ActiveRecord
 		foreach ($childrenNames as $childName)
 		{
 			Yii::$app->db->createCommand()
-				->delete(Yii::$app->getModule('user-management')->auth_item_child_table, ['parent' => $parentName, 'child' => $childName])
+				->delete(Yii::$app->getModule('user')->auth_item_child_table, ['parent' => $parentName, 'child' => $childName])
 				->execute();
 		}
 
@@ -160,7 +160,7 @@ abstract class AbstractItem extends ActiveRecord
 	 */
 	public static function tableName()
 	{
-		return Yii::$app->getModule('user-management')->auth_item_table;
+		return Yii::$app->getModule('user')->auth_item_table;
 	}
 
 	/**
@@ -205,7 +205,7 @@ abstract class AbstractItem extends ActiveRecord
 	 */
 	public static function find()
 	{
-		return parent::find()->andWhere([Yii::$app->getModule('user-management')->auth_item_table . '.type'=>static::ITEM_TYPE]);
+		return parent::find()->andWhere([Yii::$app->getModule('user')->auth_item_table . '.type'=>static::ITEM_TYPE]);
 	}
 
 	/**

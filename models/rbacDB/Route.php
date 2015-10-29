@@ -29,8 +29,8 @@ class Route extends AbstractItem
 			return [];
 		}
 
-		$auth_item = Yii::$app->getModule('user-management')->auth_item_table;
-		$auth_item_child = Yii::$app->getModule('user-management')->auth_item_child_table;
+		$auth_item = Yii::$app->getModule('user')->auth_item_table;
+		$auth_item_child = Yii::$app->getModule('user')->auth_item_child_table;
 
 		$routes = (new Query)
 			->select(['name'])
@@ -195,7 +195,7 @@ class Route extends AbstractItem
 		}
 
 		$systemPages = [
-			'/user-management/auth/logout',
+			'/user/auth/logout',
 			AuthHelper::unifyRoute(Yii::$app->errorHandler->errorAction),
 			AuthHelper::unifyRoute(Yii::$app->user->loginUrl),
 		];
@@ -205,8 +205,8 @@ class Route extends AbstractItem
 			return true;
 		}
 
-		// Registration can be enabled either by this option or by adding '/user-management/auth/registration' route to guest permissions
-		if ( $route == '/user-management/auth/registration' && Yii::$app->getModule('user-management')->enableRegistration === true )
+		// Registration can be enabled either by this option or by adding '/user/auth/registration' route to guest permissions
+		if ( $route == '/user/auth/registration' && Yii::$app->getModule('user')->enableRegistration === true )
 		{
 			return true;
 		}
@@ -234,8 +234,8 @@ class Route extends AbstractItem
 		{
 			$commonRoutesDB = (new Query())
 				->select('child')
-				->from(Yii::$app->getModule('user-management')->auth_item_child_table)
-				->where(['parent'=>Yii::$app->getModule('user-management')->commonPermissionName])
+				->from(Yii::$app->getModule('user')->auth_item_child_table)
+				->where(['parent'=>Yii::$app->getModule('user')->commonPermissionName])
 				->column();
 
 			$commonRoutes = Route::withSubRoutes($commonRoutesDB, ArrayHelper::map(Route::find()->asArray()->all(), 'name', 'name'));
