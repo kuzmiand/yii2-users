@@ -11,14 +11,14 @@ class BaseController extends Controller
     /**
      * @return array
      */
-    public function behaviors()
+    /*public function behaviors()
     {
         return [
             'access-control'=> [
                 'class' => AccessControl::className(),
             ],
         ];
-    }
+    }*/
 
     /**
      * Render ajax or usual depends on request

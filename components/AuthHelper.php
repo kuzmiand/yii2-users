@@ -29,7 +29,7 @@ class AuthHelper
 	 */
 	public static function layoutHandler($event)
 	{
-		if ( $event->action->uniqueId == 'user-management/auth/login' )
+		if ( $event->action->uniqueId == 'user/auth/login' )
 		{
 			$event->action->controller->layout = 'loginLayout.php';
 		}
@@ -322,7 +322,12 @@ class AuthHelper
 	{
 		try
 		{
-			$path = Yii::getAlias('@' . str_replace('\\', '/', $namespace));
+			if (strpos($namespace, 'yii\easyii') !== false) {
+				$n_space = substr($namespace, 4);
+				$path = Yii::getAlias('@' . str_replace('\\', '/', $n_space));
+			}else{
+				$path = Yii::getAlias('@' . str_replace('\\', '/', $namespace));
+			}
 		}
 		catch (InvalidParamException $e)
 		{

@@ -9,6 +9,14 @@ use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 use yii\helpers\ArrayHelper;
 
+use kuzmiand\users\helpers\LittleBigHelper;
+use kuzmiand\users\helpers\Singleton;
+use kuzmiand\users\components\AuthHelper;
+use kuzmiand\users\components\UserIdentity;
+use kuzmiand\users\models\rbacDB\Role;
+use kuzmiand\users\models\rbacDB\Route;
+use kuzmiand\users\Module;
+
 /**
  * User model
  *
@@ -21,6 +29,7 @@ use yii\helpers\ArrayHelper;
  * @property string $auth_key
  * @property integer $status
  * @property integer $sex
+ * @property integer $superadmin
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
@@ -33,6 +42,13 @@ class User extends ActiveRecord implements IdentityInterface
 
     const SEX_MALE = 1;
     const SEX_FEMALE = 2;
+
+    public $gridRoleSearch;
+
+    public function getIsSuperadmin()
+    {
+        return @Yii::$app->user->identity->superadmin == 1;
+    }
 
     public function getDefaultPhoto()
     {
@@ -306,4 +322,92 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return AuthItem::find()->where(['not in', 'name', ArrayHelper::getColumn($this->assignedRules, 'name')])->all();
     }
+
+
+
+    public static function assignRole($userId, $roleName)
+    {
+        try
+        {
+            Yii::$app->db->createCommand()
+                ->insert(Yii::$app->getModule('user')->auth_assignment_table, [
+                    'user_id' => $userId,
+                    'item_name' => $roleName,
+                    'created_at' => time(),
+                ])->execute();
+
+            AuthHelper::invalidatePermissions();
+
+            return true;
+        }
+        catch (\Exception $e)
+        {
+            return false;
+        }
+    }
+
+    public static function revokeRole($userId, $roleName)
+    {
+        $result = Yii::$app->db->createCommand()
+                ->delete(Yii::$app->getModule('user')->auth_assignment_table, ['user_id' => $userId, 'item_name' => $roleName])
+                ->execute() > 0;
+
+        if ( $result )
+        {
+            AuthHelper::invalidatePermissions();
+        }
+
+        return $result;
+    }
+
+    public static function hasRole($roles, $superAdminAllowed = true)
+    {
+        if ( $superAdminAllowed AND Yii::$app->user->identity->isSuperadmin )
+        {
+            return true;
+        }
+        $roles = (array)$roles;
+
+        AuthHelper::ensurePermissionsUpToDate();
+
+        return array_intersect($roles, Yii::$app->session->get(AuthHelper::SESSION_PREFIX_ROLES,[])) !== [];
+    }
+
+    public static function hasPermission($permission, $superAdminAllowed = true)
+    {
+        if ( $superAdminAllowed AND Yii::$app->user->identity->isSuperadmin )
+        {
+            return true;
+        }
+
+        AuthHelper::ensurePermissionsUpToDate();
+
+        return in_array($permission, Yii::$app->session->get(AuthHelper::SESSION_PREFIX_PERMISSIONS,[]));
+    }
+
+    public static function canRoute($route, $superAdminAllowed = true)
+    {
+        if ( $superAdminAllowed AND @Yii::$app->user->identity->isSuperadmin )
+        {
+            return true;
+        }
+
+        $baseRoute = AuthHelper::unifyRoute($route);
+
+        if ( Route::isFreeAccess($baseRoute) )
+        {
+            return true;
+        }
+
+        AuthHelper::ensurePermissionsUpToDate();
+
+        return Route::isRouteAllowed($baseRoute, Yii::$app->session->get(AuthHelper::SESSION_PREFIX_ROUTES,[]));
+    }
+
+    public function getRoles()
+    {
+        return $this->hasMany(Role::className(), ['name' => 'item_name'])
+            ->viaTable(Yii::$app->getModule('user')->auth_assignment_table, ['user_id'=>'id']);
+    }
+
 }

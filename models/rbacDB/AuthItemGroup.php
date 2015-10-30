@@ -20,7 +20,7 @@ class AuthItemGroup extends \yii\db\ActiveRecord
 	*/
 	public static function tableName()
 	{
-		return Yii::$app->getModule('user-management')->auth_item_group_table;
+		return Yii::$app->getModule('user')->auth_item_group_table;
 	}
 
 	/**

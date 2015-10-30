@@ -1,10 +1,10 @@
 <?php
 
-namespace webvimark\modules\UserManagement\models\rbacDB\search;
+namespace kuzmiand\users\models\rbacDB\search;
 
-use webvimark\modules\UserManagement\models\rbacDB\AbstractItem;
-use webvimark\modules\UserManagement\models\rbacDB\Permission;
-use webvimark\modules\UserManagement\models\rbacDB\Role;
+use kuzmiand\users\models\rbacDB\AbstractItem;
+use kuzmiand\users\models\rbacDB\Permission;
+use kuzmiand\users\models\rbacDB\Role;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -46,9 +46,9 @@ abstract class AbstractItemSearch extends AbstractItem
 			return $dataProvider;
 		}
 
-        	$query->andFilterWhere(['like', Yii::$app->getModule('user-management')->auth_item_table.'.name', $this->name])
-			->andFilterWhere(['like', Yii::$app->getModule('user-management')->auth_item_table.'.description', $this->description])
-			->andFilterWhere([Yii::$app->getModule('user-management')->auth_item_table.'.group_code'=>$this->group_code]);
+        	$query->andFilterWhere(['like', Yii::$app->getModule('user')->auth_item_table.'.name', $this->name])
+			->andFilterWhere(['like', Yii::$app->getModule('user')->auth_item_table.'.description', $this->description])
+			->andFilterWhere([Yii::$app->getModule('user')->auth_item_table.'.group_code'=>$this->group_code]);
 
 		return $dataProvider;
 	}

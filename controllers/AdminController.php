@@ -2,6 +2,7 @@
 
 namespace kuzmiand\users\controllers;
 
+use kuzmiand\users\components\AdminDefaultController;
 use Yii;
 use kuzmiand\users\models\User;
 use yii\data\ActiveDataProvider;
@@ -14,9 +15,13 @@ use yii\filters\AccessControl;
 /**
  * AdminController implements the CRUD actions for User model.
  */
-class AdminController extends Controller
+class AdminController extends AdminDefaultController
 {
     private $_model = false;
+
+    public $modelClass = 'kuzmiand\users\models\User';
+
+    public $modelSearchClass = 'kuzmiand\users\models\search\UserSearch';
 
     public function init()
     {
@@ -78,7 +83,7 @@ class AdminController extends Controller
      * Lists all User models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndexOld()
     {
         $dataProvider = new ActiveDataProvider([
             'query' => User::find(),
@@ -88,6 +93,7 @@ class AdminController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
 
     /**
      * Displays a single User model.

@@ -1,5 +1,5 @@
 <?php
-namespace webvimark\modules\UserManagement\models\rbacDB\search;
+namespace kuzmiand\users\models\rbacDB\search;
 
 class RoleSearch extends AbstractItemSearch
 {

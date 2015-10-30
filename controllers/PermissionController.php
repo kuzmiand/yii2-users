@@ -26,6 +26,13 @@ class PermissionController extends AdminDefaultController
 	 */
 	public $modelSearchClass = 'kuzmiand\users\models\rbacDB\search\PermissionSearch';
 
+	public function init()
+	{
+		parent::init();
+		$this->layout = $this->module->getCustomLayout('permission');
+	}
+
+
 	/**
 	 * @param string $id
 	 *
@@ -38,7 +45,7 @@ class PermissionController extends AdminDefaultController
 		$routes = Route::find()->asArray()->all();
 
 		$permissions = Permission::find()
-			->andWhere(['not in', Yii::$app->getModule('user-management')->auth_item_table . '.name', [Yii::$app->getModule('user-management')->commonPermissionName, $id]])
+			->andWhere(['not in', Yii::$app->getModule('user')->auth_item_table . '.name', [Yii::$app->getModule('user')->commonPermissionName, $id]])
 			->joinWith('group')
 			->all();
 
@@ -101,7 +108,7 @@ class PermissionController extends AdminDefaultController
 		Permission::addChildren($id, $toAdd);
 		Permission::removeChildren($id, $toRemove);
 
-		if ( ( $toAdd OR $toRemove ) AND ( $id == Yii::$app->getModule('user-management')->commonPermissionName ) )
+		if ( ( $toAdd OR $toRemove ) AND ( $id == Yii::$app->getModule('user')->commonPermissionName ) )
 		{
 			Yii::$app->cache->delete('__commonRoutes');
 		}
