@@ -12,6 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <h2 class="lte-hide-title">Settings for permission : <span style="color: darkorange"><?= $item->description ?></span></h2>
 
 
+
 <?php if ( Yii::$app->session->hasFlash('success') ): ?>
 	<div class="alert alert-success text-center">
 		<?= Yii::$app->session->getFlash('success') ?>
@@ -28,7 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<strong>
+
 					<span class="glyphicon glyphicon-th"></span> <?= 'Child permissions' ?>
+
 				</strong>
 			</div>
 			<div class="panel-body">
@@ -58,7 +61,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				<hr/>
 				<?= Html::submitButton(
+
 					'<span class="glyphicon glyphicon-ok"></span> ' .  'Save',
+
 					['class'=>'btn btn-primary btn-sm']
 				) ?>
 
@@ -93,6 +98,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					<div class="col-sm-3">
 						<?= Html::submitButton(
 							'<span class="glyphicon glyphicon-ok"></span> ' . 'Save',
+
 							['class'=>'btn btn-primary btn-sm']
 						) ?>
 					</div>
@@ -135,6 +141,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<hr/>
 				<?= Html::submitButton(
 					'<span class="glyphicon glyphicon-ok"></span> ' . 'Save',
+
 					['class'=>'btn btn-primary btn-sm']
 				) ?>
 

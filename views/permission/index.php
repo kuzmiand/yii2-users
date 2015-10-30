@@ -10,7 +10,6 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
 
-
 $this->title = 'Permissions';
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -58,6 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					'attribute'=>'description',
 					'value'=>function($model){
 							if ( $model->name == Yii::$app->getModule('user')->commonPermissionName )
+
 							{
 								return Html::a(
 									$model->description,

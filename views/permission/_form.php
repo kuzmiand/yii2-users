@@ -1,10 +1,6 @@
 <?php
-/**
- * @var yii\widgets\ActiveForm $form
- * @var webvimark\modules\UserManagement\models\rbacDB\Permission $model
- */
-
 use kuzmiand\users\models\rbacDB\AuthItemGroup;
+
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;

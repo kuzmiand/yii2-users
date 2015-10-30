@@ -1,5 +1,4 @@
 <?php
-
 $this->title = 'Permission creation';
 $this->params['breadcrumbs'][] = ['label' => 'Permissions', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
