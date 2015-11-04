@@ -1,12 +1,11 @@
 <?php
+namespace kuzmiand\users\models\search;
 
-namespace webvimark\modules\UserManagement\models\search;
-
-use webvimark\modules\UserManagement\models\User;
+use kuzmiand\users\models\User;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use webvimark\modules\UserManagement\models\UserVisitLog;
+use kuzmiand\users\models\UserVisitLog;
 
 /**
  * UserVisitLogSearch represents the model behind the search form about `webvimark\modules\UserManagement\models\UserVisitLog`.

@@ -15,11 +15,16 @@ use yii\helpers\Url;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 
-class UserController extends \yii\web\Controller
+use kuzmiand\behaviors\multilanguage\MultiLanguageHelper;
+use app\components\Controller;
+
+//class UserController extends \yii\web\Controller
+class UserController extends Controller
 {
 
     public function init()
     {
+        //MultiLanguageHelper::catchLanguage();
         parent::init();
         $this->layout = $this->module->getCustomLayout('user');
     }

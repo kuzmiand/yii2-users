@@ -5,9 +5,17 @@ namespace kuzmiand\users\components;
 use Yii;
 use yii\web\Controller;
 use kuzmiand\users\components\AccessControl;
+use kuzmiand\behaviors\multilanguage\MultiLanguageHelper;
 
 class BaseController extends Controller
 {
+
+    public function init()
+    {
+        MultiLanguageHelper::catchLanguage();
+        parent::init();
+    }
+
     /**
      * @return array
      */

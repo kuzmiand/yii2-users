@@ -7,7 +7,7 @@ use kuzmiand\users\components\AuthHelper;
 use kuzmiand\users\models\rbacDB\AbstractItem;
 use kuzmiand\users\models\rbacDB\Permission;
 use kuzmiand\users\models\rbacDB\Route;
-use webvimark\modules\UserManagement\models\rbacDB\search\PermissionSearch;
+use kuzmiand\users\models\rbacDB\search\PermissionSearch;
 use kuzmiand\users\components\AdminDefaultController;
 //use webvimark\modules\UserManagement\UserManagementModule;
 use yii\db\Query;
